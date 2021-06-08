@@ -30,6 +30,14 @@ public class Tabuleiro {
         this.linha = linha;
     }
 
+    public int getLinha() {
+        return this.linha;
+    }
+
+    public int getColuna() {
+        return this.coluna;
+    }
+
     public void setColuna(int coluna) {
         this.coluna = coluna;
     }
@@ -69,8 +77,13 @@ public class Tabuleiro {
             if ((tabuleiro[linha][coluna] != '_') && ((linha < 9 && linha > 0) && (coluna < 9 && coluna > 0)))
                 System.out.println("Esse campo já está sendo exibido");
 
-            if (linha < 1 || linha > 8 || coluna < 1 || coluna > 8)
+            if (linha < 1 || linha > 8 || coluna < 1 || coluna > 8) {
+                if (this.modoDeTeste) {
+                    break;
+                }
                 System.out.println("Escolha números de 1 até 8");
+            }
+                
 
         } while ((linha < 1 && linha > 8) && (coluna < 1 && coluna > 8) || (tabuleiro[linha][coluna] != '_'));
 
