@@ -8,6 +8,8 @@ public class Tabuleiro {
     private char[][] tabuleiro;
     private int linha, coluna;
 
+    private boolean modoDeTeste;
+
     private Random random = new Random();
     private Scanner entrada = new Scanner(System.in);
 
@@ -18,6 +20,18 @@ public class Tabuleiro {
         sorteieMinas(); // coloca, aleatoriamente, 10 minas no tabuleiro de minas
         preenchaDicas();// preenche o tabuleiro de minas com o número de minas vizinhas
         inicieTabuleiro();
+    }
+
+    public void setModoDeTeste(boolean ativado) {
+        this.modoDeTeste = ativado;
+    }
+
+    public void setLinha(int linha) {
+        this.linha = linha;
+    }
+
+    public void setColuna(int coluna) {
+        this.coluna = coluna;
     }
 
     public boolean ganhou() {
@@ -48,9 +62,9 @@ public class Tabuleiro {
 
         do {
             System.out.print("\nLinha: ");
-            linha = entrada.nextInt();
+            if (!this.modoDeTeste) linha = entrada.nextInt();
             System.out.print("Coluna: ");
-            coluna = entrada.nextInt();
+            if (!this.modoDeTeste) coluna = entrada.nextInt();
 
             if ((tabuleiro[linha][coluna] != '_') && ((linha < 9 && linha > 0) && (coluna < 9 && coluna > 0)))
                 System.out.println("Esse campo já está sendo exibido");
